@@ -16,7 +16,7 @@ Open up config.py
 then put in all your details
 ```
 # Running
-
+m = number
 ```
 python(n) bot.py
 ```
