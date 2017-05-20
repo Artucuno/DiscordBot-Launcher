@@ -100,6 +100,6 @@ async def on_ready(): # On the ready event ( CMD OPEN And LOGED)
     print("\n")
     print("Our Offical server : https://discord.gg/U7p7Szs")
     print("Random Server {} want your server mentioned? ask the staff on the offical server!".format(random.choice(messages)))
-
-bot.run(config.TOKEN)
-
+    print("=========================================================================================\n"
+          "Hello Articuno here! in this version commands may not work altho i am trying to\n"
+          "fix this! if you want to help me join the offical server!\n")
