@@ -18,33 +18,17 @@ import os
 import sys
 import subprocess
 import random
+import discord
+from discord.ext import commands
+from random import randint
+from random import choice
+from enum import Enum
+from urllib.parse import quote_plus
+import datetime
+import time
+import aiohttp
+import asyncio
 
-@commands.command(pass_context=True)
-async def info(ctx):
-    """Shows information on this bot."""
-    owner = config.OWNER
-    devs = config.DEVS
-    server = "In Progress"
-    info = discord.Embed()
-    info.description = "This Is In Progress"
-    await bot.say(embed=info)
-
-@commands.command(pass_context=True)
-async def staff(ctx):
-    """Shows The bot's Staff"""
-    staff = discord.Embed()
-    staff.title = "My Staff Are {}".format(config.STAFF)
-    await bot.say(embed=staff)
-
-@commands.command(pass_context=True)
-async def help(ctx):
-    """Shows This"""
-    VERSION = "1.0"
-    helpc = discord.Embed(title="__WizBot Help__", description="""
-        **info** Shows Information About The Bot
-        **staff** Show The Bot's Staff""")
-    helpc.set_footer(text="More Commands Will Be Comming Soon , This Is WizBot Version{}".format(VERSION))
-    await bot.say(embed=helpc)
     
 logging.basicConfig(level=logging.INFO) # Configurates the logger
 logger = logging.getLogger('discord')
@@ -101,5 +85,29 @@ async def on_ready(): # On the ready event ( CMD OPEN And LOGED)
     print("Our Offical server : https://discord.gg/U7p7Szs")
     print("Random Server {} want your server mentioned? ask the staff on the offical server!".format(random.choice(messages)))
     print("=========================================================================================\n"
-          "Hello Articuno here! in this version commands may not work altho i am trying to\n"
-          "fix this! if you want to help me join the offical server!\n")
+          "Fixed commands!\n"
+          "=========================================================================================\n")
+    
+
+
+@bot.command(pass_context=True)
+async def info(ctx):
+    """Shows information on this bot."""
+    await bot.say("**{}** Info\n"
+                  "=============\n"
+                  "**`Owner` {}**\n **`Staff` {}** ".format(bot.user.name, config.OWNER, config.STAFF))
+
+@bot.command(pass_context=True)
+async def serverinfo(ctx):
+    """Shows info about the server"""
+    server = ctx.message.server
+    total_users = len(server.members)
+    text_channels = len([x for x in server.channels
+                             if x.type == discord.ChannelType.text])
+    voice_channels = len(server.channels) - text_channels
+    await bot.say("{} Info\n"
+                  "=============\n"
+                  "Channels | {}\n"
+                  "\n"
+                  "user count | {}\n".format(server, text_channels, total_users))
+bot.run(config.TOKEN)
