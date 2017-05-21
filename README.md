@@ -1,7 +1,7 @@
 # DiscordBot-Launcher
 
 # Needs Fixing
-Commands : commands wont load in help
+start/shut issue : the bot will just auto shutdown after aprox 6 hours
 
 # Cloning
 ```
