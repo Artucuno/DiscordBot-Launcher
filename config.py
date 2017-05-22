@@ -1,11 +1,17 @@
-PREFIX = "Bots prefix"
+BOTNAME = "DiscordBot-Launcher"
 
-VERSION = "1.2"
+BOTID = "Bots id"
 
-TOKEN = 'Token Here'
+PREFIX = "!"
 
-DEVS = "Who you are working with"
+VERSION = "1.3"
 
-STAFF = "Helpers"
+TOKEN = 'Bot token'
 
-OWNERSID = "Your id"
+OWNER = "owner"
+
+DEVS = "developers"
+
+STAFF = "staff"
+
+OWNERSID = "your id"
