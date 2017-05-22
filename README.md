@@ -20,4 +20,10 @@ n = number
 ```
 python(n) bot.py
 ```
+# Updating
+```
+cd Bot_update
+sudo python(n) setup.py install
+sudo python(n) setup.py build
+```
 Then your Done you made your own discord bot!
