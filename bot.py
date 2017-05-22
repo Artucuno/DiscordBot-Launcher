@@ -86,6 +86,7 @@ async def on_ready(): # On the ready event ( CMD OPEN And LOGED)
     print("Random Server {} want your server mentioned? ask the staff on the offical server!".format(random.choice(messages)))
     print("=========================================================================================\n"
           "Fixed commands! | adding more commands soon!\n"
+          "Fixed Login issue\n"
           "=========================================================================================\n")
     
 
