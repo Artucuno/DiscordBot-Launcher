@@ -85,8 +85,8 @@ async def on_ready(): # On the ready event ( CMD OPEN And LOGED)
     print("Our Offical server : https://discord.gg/U7p7Szs")
     print("Random Server {} want your server mentioned? ask the staff on the offical server!".format(random.choice(messages)))
     print("=========================================================================================\n"
-          "Hello Articuno here! in this version commands may not work altho i am trying to\n"
-          "fix this! if you want to help me join the offical server!\n")
+          "Hello Articuno here! i have fixed commands! [Have any issues? contact (Articuno&Josh#9712)\n"
+          "or on https://github.com/Articuno1234/DiscordBot-Launcher/issues\n"
     print("=========================================================================================\n")
     
 
