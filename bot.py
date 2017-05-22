@@ -78,19 +78,16 @@ async def on_ready(): # On the ready event ( CMD OPEN And LOGED)
     print("{} Servers".format(servers))
     print("{} Users".format(users))
     print("{} Channels".format(channels))
-    print("\n")
-    print("Running on version\n"
-          "{}".format(config.VERSION))
     print("Owner: " + config.OWNER)
     print("\n")
-    print("Invite : https://discordapp.com/oauth2/authorize?client_id={}&scope=bot&permissions=0".format(bot.user.id))
+    print("Invite : https://discordapp.com//oauth2/authorize?client_id={}&scope=bot&permissions=0".format(bot.user.id))
     print("\n")
     print("Our Offical server : https://discord.gg/U7p7Szs")
     print("Random Server {} want your server mentioned? ask the staff on the offical server!".format(random.choice(messages)))
     print("=========================================================================================\n"
-          "Fixed commands! | adding more commands soon!\n"
-          "Fixed Login issue\n"
-          "=========================================================================================\n")
+          "Hello Articuno here! in this version commands may not work altho i am trying to\n"
+          "fix this! if you want to help me join the offical server!\n")
+    print("=========================================================================================\n")
     
 
 
@@ -114,4 +111,13 @@ async def serverinfo(ctx):
                   "Channels | {}\n"
                   "\n"
                   "user count | {}\n".format(server, text_channels, total_users))
+
+@bot.command(pass_context=True)
+async def ping(ctx):
+    """Shows info about the server"""
+    t1 = time.perf_counter()
+    await bot.send_typing(ctx.message.channel)
+    t2 = time.perf_counter()
+    await bot.say("**Pong.**\nTime: " + str(round((t2-t1)*1000)) + "ms")
+    
 bot.run(config.TOKEN)
