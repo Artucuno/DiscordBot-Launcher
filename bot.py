@@ -29,20 +29,53 @@ import time
 import aiohttp
 import asyncio
 
-    
+def user_choice():
+    return input("> ").lower().strip()
+
 logging.basicConfig(level=logging.INFO) # Configurates the logger
 logger = logging.getLogger('discord')
 
 description = '''DiscordBot-Launcher a bot made by Articuno & Neo'''
-
 bot = Bot(command_prefix=config.PREFIX) # Sets the client and sets the prefix to what is defined in "config.py"
+users = len(set(bot.get_all_members()))
+servers = len(bot.servers)
+channels = len([c for c in bot.get_all_channels()])
+messages = ["https://discord.gg/6fC3gjm", "https://discord.gg/Ank8Udt", "https://discord.gg/ZBX2qCv", "https://discord.gg/zZjG9pe"]
+@bot.command(pass_context=True)
+async def info(ctx):
+    """Shows information on this bot."""
+    await bot.say("**{}** Info\n"
+                  "=============\n"
+                  "**`Owner` {}**\n **`Staff` {}** ".format(bot.user.name, config.OWNER, config.STAFF))
 
-@bot.event
-async def on_ready(): # On the ready event ( CMD OPEN And LOGED)
-    users = len(set(bot.get_all_members()))
-    servers = len(bot.servers)
-    channels = len([c for c in bot.get_all_channels()])
-    messages = ["https://discord.gg/6fC3gjm", "https://discord.gg/Ank8Udt", "https://discord.gg/ZBX2qCv", "https://discord.gg/zZjG9pe"]
+@bot.command(pass_context=True)
+async def serverinfo(ctx):
+    """Shows info about the server"""
+    server = ctx.message.server
+    total_users = len(server.members)
+    text_channels = len([x for x in server.channels
+                             if x.type == discord.ChannelType.text])
+    voice_channels = len(server.channels) - text_channels
+    await bot.say("{} Info\n"
+                  "=============\n"
+                  "Channels | {}\n"
+                  "\n"
+                  "user count | {}\n".format(server, text_channels, total_users))
+
+@bot.command(pass_context=True)
+async def ping(ctx):
+    """Shows info about the server"""
+    t1 = time.perf_counter()
+    await bot.send_typing(ctx.message.channel)
+    t2 = time.perf_counter()
+    await bot.say("**Pong.**\nTime: " + str(round((t2-t1)*1000)) + "ms")
+
+@bot.command(pass_context=True)
+async def sysinfo(ctx):
+    """"""
+    await bot.say("")
+    
+def run_bot():
     print("\n")
     print("\n")
     print("\n")
@@ -72,52 +105,32 @@ async def on_ready(): # On the ready event ( CMD OPEN And LOGED)
     print('--------------------\n'
           'DiscordBot-Launcher\n'
           '--------------------\n')
-    print(bot.user.name)
+    print(config.BOTNAME)
     print("\n")
     print("Stats:\n")
-    print("{} Servers".format(servers))
-    print("{} Users".format(users))
-    print("{} Channels".format(channels))
+    print("UNKNOWN Servers".format(servers))
+    print("UNKNOWN Users".format(users))
+    print("UNKNOWN Channels".format(channels))
     print("Owner: " + config.OWNER)
     print("\n")
-    print("Invite : https://discordapp.com//oauth2/authorize?client_id={}&scope=bot&permissions=0".format(bot.user.id))
+    print("Invite : https://discordapp.com//oauth2/authorize?client_id={}&scope=bot&permissions=0".format(config.BOTID))
     print("\n")
     print("Our Offical server : https://discord.gg/U7p7Szs")
     print("Random Server {} want your server mentioned? ask the staff on the offical server!".format(random.choice(messages)))
     print("=========================================================================================\n"
-          "Hello Articuno here! i have fixed commands! [Have any issues? contact (Articuno&Josh#9712)\n"
-          "or on https://github.com/Articuno1234/DiscordBot-Launcher/issues\n"
+          "Errors with startup so it wont show Servers, users or channels! sorry! :(\n")
     print("=========================================================================================\n")
+    bot.run(config.TOKEN)
     
 
-
-@bot.command(pass_context=True)
-async def info(ctx):
-    """Shows information on this bot."""
-    await bot.say("**{}** Info\n"
-                  "=============\n"
-                  "**`Owner` {}**\n **`Staff` {}** ".format(bot.user.name, config.OWNER, config.STAFF))
-
-@bot.command(pass_context=True)
-async def serverinfo(ctx):
-    """Shows info about the server"""
-    server = ctx.message.server
-    total_users = len(server.members)
-    text_channels = len([x for x in server.channels
-                             if x.type == discord.ChannelType.text])
-    voice_channels = len(server.channels) - text_channels
-    await bot.say("{} Info\n"
-                  "=============\n"
-                  "Channels | {}\n"
-                  "\n"
-                  "user count | {}\n".format(server, text_channels, total_users))
-
-@bot.command(pass_context=True)
-async def ping(ctx):
-    """Shows info about the server"""
-    t1 = time.perf_counter()
-    await bot.send_typing(ctx.message.channel)
-    t2 = time.perf_counter()
-    await bot.say("**Pong.**\nTime: " + str(round((t2-t1)*1000)) + "ms")
-    
-bot.run(config.TOKEN)
+print("==========================\n"
+      "DiscordBot-Launcher\n"
+      "==========================\n")
+print("\n")
+print("1. Run DiscordBot-Launcher")
+print("0. Quit")
+choice = user_choice()
+if choice == "1":
+    run_bot()
+elif choice == "0":
+    print("you may now close this terminal!")
