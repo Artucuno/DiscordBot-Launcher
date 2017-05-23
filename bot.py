@@ -115,7 +115,7 @@ def run_bot():
     print("\n")
     print("Invite : https://discordapp.com//oauth2/authorize?client_id={}&scope=bot&permissions=0".format(config.BOTID))
     print("\n")
-    print("Our Offical server : https://discord.gg/U7p7Szs")
+    print("Our Offical server : https://discord.gg/5ajFnqk")
     print("Random Server {} want your server mentioned? ask the staff on the offical server!".format(random.choice(messages)))
     print("=========================================================================================\n"
           "Errors with startup so it wont show Servers, users or channels! sorry! :(\n")
