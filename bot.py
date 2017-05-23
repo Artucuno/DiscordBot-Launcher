@@ -28,7 +28,6 @@ import datetime
 import time
 import aiohttp
 import asyncio
-import info
 
 def is_git_installed():
     try:
