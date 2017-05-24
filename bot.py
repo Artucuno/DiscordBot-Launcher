@@ -143,6 +143,16 @@ async def serverinfo(ctx):
                   "user count | {}\n".format(server, text_channels, total_users))
 
 @bot.command(pass_context=True)
+async def github(ctx):
+    """DiscordBot-Launcher's repo"""
+    em = discord.Embed(color=0x0BFCF2)
+    em.add_field(name='Link', value=("[Click Here!]("https://github.com/Articuno1234/DiscordBot-Launcher)")))
+    em.add_field(name='Version', value=config.VERSION))
+    em.set_thumbnail(url= "https://assets-cdn.github.com/images/spinners/octocat-spinner-128.gif")
+    await bot.say(embed = em)
+    
+
+@bot.command(pass_context=True)
 async def ping(ctx):
     """Shows info about the server"""
     t1 = time.perf_counter()
