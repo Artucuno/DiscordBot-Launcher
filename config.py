@@ -4,7 +4,7 @@ BOTID = "Bots id"
 
 PREFIX = "!"
 
-VERSION = "1.3"
+VERSION = "1.4"
 
 TOKEN = 'Bot token'
 
