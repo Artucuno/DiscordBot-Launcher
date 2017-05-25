@@ -6,4 +6,4 @@ PASSWORD = "your password"
 
 TOKEN = "your Token"
 
-PREFIX = "selfbot prefix"
+PREFIX = "userbot prefix"
