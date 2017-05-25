@@ -28,6 +28,7 @@ import datetime
 import time
 import aiohttp
 import asyncio
+import selfconfig
 
 def is_git_installed():
     try:
@@ -43,6 +44,7 @@ logging.basicConfig(level=logging.INFO) # Configurates the logger
 logger = logging.getLogger('discord')
 description = '''DiscordBot-Launcher a bot made by Articuno & Neo'''
 bot = Bot(command_prefix=config.PREFIX) # Sets the client and sets the prefix to what is defined in "config.py"
+bot = Bot(command_prefix=selfconfig.PREFIX) # Sets the client and sets the prefix to what is defined in "config.py"
 users = len(set(bot.get_all_members()))
 servers = len(bot.servers)
 channels = len([c for c in bot.get_all_channels()])
@@ -51,6 +53,53 @@ messages = ["https://discord.gg/6fC3gjm", "https://discord.gg/Ank8Udt", "https:/
 def user_choice():
     return input("> ").lower().strip()
 
+def run_userbot():
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print("\n")
+    print('--------------------\n'
+          'DiscordBot-Launcher\n'
+          '--------------------\n')
+    print(selfconfig.NAME)
+    print("\n")
+    print("Stats:\n")
+    print("UNKNOWN Servers".format(servers))
+    print("UNKNOWN Users".format(users))
+    print("UNKNOWN Channels".format(channels))
+    print("Owner: " + config.OWNER)
+    print("\n")
+    print("Invite : https://discordapp.com//oauth2/authorize?client_id={}&scope=bot&permissions=0".format("SelfBot"))
+    print("\n")
+    print("Our Offical server : https://discord.gg/U7p7Szs")
+    print("Random Server {} want your server mentioned? ask the staff on the offical server!".format(random.choice(messages)))
+    print("=========================================================================================\n"
+          "Errors with startup so it wont show Servers, users or channels! sorry! :(\n")
+    print("=========================================================================================\n")
+    bot.run(selfconfig.EMAIL, selfconfig.PASSWORD)
+    
 def run_bot():
     print("\n")
     print("\n")
@@ -148,7 +197,8 @@ async def github(ctx):
     em = discord.Embed(color=0x0BFCF2)
     em.add_field(name='Link', value=("[Click Here!](https://github.com/Articuno1234/DiscordBot-Launcher)"))
     em.add_field(name='Version', value=config.VERSION)
-    em.set_thumbnail(url= "https://assets-cdn.github.comem.add_field(name='Link', value=("[Click Here!]("https://github.com/Articuno1234/DiscordBot-Launcher)")))/images/spinners/octocat-spinner-128.gif")
+    em.add_field(name='Offical server', value=("[Click here!](https://discord.gg/bDhvWKE)"))
+    em.set_thumbnail(url= "https://assets-cdn.github.com/images/spinners/octocat-spinner-128.gif")
     await bot.say(embed = em)
     
 
@@ -162,9 +212,17 @@ async def ping(ctx):
 
 @bot.command(pass_context=True)
 async def sysinfo(ctx):
-    """"""
-    await bot.say("")
-
+    """System info"""
+    commands_run = bot.counter['processed_commands']
+    read_messages = bot.counter['messages_read']
+    em = discord.Embed(color=0x0BFCF2)
+    t1 = time.perf_counter()
+    await bot.send_typing(ctx.message.channel)
+    t2 = time.perf_counter()
+    em.add_field(name='Ping :ping_pong: ', value=(str(round((t2-t1)*1000)) + "ms"))
+    em.add_field(name='Messages Read', value=(read_messages))
+    em.add_field(name='Commands run', value=(commands_run))
+    await bot.say(embed = em)
     
 @bot.command(pass_context=True)
 async def req(ctx):
@@ -228,12 +286,15 @@ print("==========================\n"
       "==========================\n")
 print("\n")
 print("1. Run DiscordBot-Launcher")
-print("2. Licence + (c) info")
+print("2. run DiscordBot-Launcher-selfBot")
+print("3. Licence + (c) info")
 print("0. Quit")
 choice = user_choice()
 if choice == "1":
     run_bot()
 if choice == "2":
+    run_userbot()
+if choice == "3":
     print("{}".format(LICENCE))
     choice = user_choice()
     if choice == "0":
