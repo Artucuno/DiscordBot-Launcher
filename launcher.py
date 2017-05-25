@@ -28,7 +28,7 @@ import datetime
 import time
 import aiohttp
 import asyncio
-import selfconfig
+import userconfig
 
 def is_git_installed():
     try:
@@ -83,7 +83,7 @@ def run_userbot():
     print('--------------------\n'
           'DiscordBot-Launcher\n'
           '--------------------\n')
-    print(selfconfig.NAME)
+    print(userconfig.NAME)
     print("\n")
     print("Stats:\n")
     print("UNKNOWN Servers".format(servers))
@@ -91,7 +91,7 @@ def run_userbot():
     print("UNKNOWN Channels".format(channels))
     print("Owner: " + config.OWNER)
     print("\n")
-    print("Invite : https://discordapp.com//oauth2/authorize?client_id={}&scope=bot&permissions=0".format("SelfBot"))
+    print("Invite : https://discordapp.com//oauth2/authorize?client_id={}&scope=bot&permissions=0".format("UserBot"))
     print("\n")
     print("Our Offical server : https://discord.gg/U7p7Szs")
     print("Random Server {} want your server mentioned? ask the staff on the offical server!".format(random.choice(messages)))
@@ -286,8 +286,8 @@ print("==========================\n"
       "==========================\n")
 print("\n")
 print("1. Run DiscordBot-Launcher")
-print("2. run DiscordBot-Launcher-selfBot")
-print("3. Licence + (c) info")
+print("2. Run DiscordBot-Launcher-UserBot")
+print("3. Licence + (c) info (soon™)")
 print("0. Quit")
 choice = user_choice()
 if choice == "1":
